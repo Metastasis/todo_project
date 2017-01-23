@@ -13,3 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+    let $todoForm = $('.todo-form');
+    let $todoSubmitLink = $('.todo-form a.todo-form__submit');
+    let $todoCancelLink = $('.todo-form a.todo-form__cancel');
+    let $todoToggleLink = $('header a.todo-add');
+
+    $todoSubmitLink.click(function(e) {
+        e.preventDefault();
+        $todoForm.submit();
+    });
+
+    $todoCancelLink.click(function(e){
+      e.preventDefault();
+      $todoForm.hide();
+    });
+
+    $todoToggleLink.click(function(e){
+      e.preventDefault();
+      $todoForm.toggle();
+    });
+});

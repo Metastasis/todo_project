@@ -1,2 +1,40 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<header>
+  <h1>Задачи</h1>
+  <%= link_to "+", "#", class: "todo-add" %>
+</header>
+
+<div class="container">
+  <% @projects.each do |project| %>
+    <section class="project">
+      <h3><%= project.title %></h3>
+      <ul class="project__todos">
+        <% project.todos.each do |todo| %>
+          <li class="project_todos_item"><%= todo.text %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+</div>
+
+<div class="popup-container">
+   <%= form_for :todo, as: :post, url: projects_create_url, :html => { :class => "todo-form" } do |f| %>
+    <p>
+      <%= f.check_box :isCompleted %>
+    </p>
+
+    <p>
+      <%=  f.label :text %>
+      <%=  f.text_field :text %>
+    </p>
+
+    <p>
+      <%= f.collection_select(:project_id, @projects, :id, :title) %>
+    </p>
+
+    <p class="todo-form__actions">
+      <%= link_to "Отмена", "#", class: "todo-form__cancel" %>
+      <%= link_to "ОК", "#", class: "todo-form__submit" %>
+    </p>
+
+  <% end %>
+</div>
