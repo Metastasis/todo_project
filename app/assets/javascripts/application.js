@@ -15,23 +15,23 @@
 //= require_tree .
 
 $(function() {
-    let $todoForm = $('.todo-form');
-    let $todoSubmitLink = $('.todo-form a.todo-form__submit');
-    let $todoCancelLink = $('.todo-form a.todo-form__cancel');
-    let $todoToggleLink = $('header a.todo-add');
+    var todoForm = ('.todo-form');
+    var todoSubmitLink = ('.todo-form a.todo-form__submit');
+    var todoCancelLink = ('.todo-form a.todo-form__cancel');
+    var todoToggleLink = ('header a.todo-add');
 
-    $todoSubmitLink.click(function(e) {
+    todoSubmitLink.click(function(e) {
         e.preventDefault();
-        $todoForm.submit();
+        todoForm.submit();
     });
 
-    $todoCancelLink.click(function(e){
+    todoCancelLink.click(function(e){
       e.preventDefault();
-      $todoForm.hide();
+      todoForm.hide();
     });
 
-    $todoToggleLink.click(function(e){
+    todoToggleLink.click(function(e){
       e.preventDefault();
-      $todoForm.toggle();
+      todoForm.toggle();
     });
 });
