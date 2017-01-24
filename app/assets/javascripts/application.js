@@ -12,26 +12,55 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require vendor/iCheck/icheck
+//= require select2
+// require_tree .
 
 $(function() {
-    var todoForm = ('.todo-form');
-    var todoSubmitLink = ('.todo-form a.todo-form__submit');
-    var todoCancelLink = ('.todo-form a.todo-form__cancel');
-    var todoToggleLink = ('header a.todo-add');
+    var todoFormSelect = $(".todo-form select").select2({
+        minimumResultsForSearch: Infinity,
+        placeholder: "Select a project"
+    });
+    var modalOverlay = $("#modal-overlay");
+    var projectListForm = $('.project__todos .project__todos__item form');
+    var projectList = $('.project__todos .project__todos__item input[type="checkbox"]');
+    var todoForm = $('.todo-form');
+    var todoSubmitLink = $('.todo-form a.todo-form__submit');
+    var todoCancelLink = $('.todo-form a.todo-form__cancel');
+    var todoToggleLink = $('.navbar-header a.todo-add');
 
-    todoSubmitLink.click(function(e) {
+    todoSubmitLink.click(submitTodoForm);
+    todoToggleLink.click(toggleTodoForm);
+    todoCancelLink.click(toggleTodoForm);
+
+    projectList.iCheck({
+        handle: 'checkbox',
+        checkboxClass: 'icheckbox_square-blue',
+    });
+
+    projectList.on('ifClicked', updateTodoItem);
+
+    function toggleTodoForm(e) {
         e.preventDefault();
-        todoForm.submit();
-    });
+        todoForm.toggleClass('invisible');
+        modalOverlay.toggleClass('invisible');
+        todoForm.find('.invisible').removeClass();
+    }
 
-    todoCancelLink.click(function(e){
-      e.preventDefault();
-      todoForm.hide();
-    });
+    function submitTodoForm(e) {
+        e.preventDefault();
+        $(e.target).closest('form').submit();
+    }
 
-    todoToggleLink.click(function(e){
-      e.preventDefault();
-      todoForm.toggle();
-    });
+    function updateTodoItem(e) {
+        $(this).iCheck('toggle');
+
+        var checked = $(this).prop('checked');
+        var label = $(this).parent().next();
+        var strikeClass = 'line-through';
+
+        checked ? label.addClass(strikeClass) : label.removeClass(strikeClass);
+        submitTodoForm(e);
+    }
+
 });

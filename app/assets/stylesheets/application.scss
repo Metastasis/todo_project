@@ -1,0 +1,193 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require select2
+ */
+
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+    font-family: 'OpenSans';
+    src: font-url('opensans-regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: font-url('opensans-light.ttf');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: font-url('opensans-semibold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    // font-size: 10px;
+    font-family: 'OpenSans';
+    padding-top: 70px;
+}
+
+.project__todos {
+    list-style: none;
+    padding: 0;
+}
+
+.project__todos__item label {
+    display: inline;
+}
+
+.full-width {
+    padding: 0;
+    width: 100%;
+}
+
+.center-abs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.todo-form {
+    width: 500px;
+    background-color: #fff;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1040;
+}
+
+.modal-overlay {
+    z-index: 1030;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.todo-form__header {
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.todo-form__body {
+    padding: 0 10px;
+}
+
+.todo-form__body form {
+    width: 100%;
+}
+
+.todo-form__body input,
+.todo-form__body select {
+    width: 100%;
+}
+
+.todo-form__body input {
+    height: 40px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.navbar-header__blue {
+    background-color: #3AAFDB;
+}
+
+.navbar-header__blue a {
+    color: white;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.btn {
+    display: inline-block;
+    background-color: white;
+    width: 49%;
+    text-align: center;
+    padding: 10px 0;
+    margin-right: 1%;
+    color: white;
+}
+
+a:hover,
+a:focus,
+a:active,
+{
+    text-decoration: none;
+    opacity: 0.9;
+    outline: 0;
+}
+
+.todo-form__cancel {
+    background-color: #9F9F9F;
+}
+
+.todo-form__submit {
+    background-color: #39AFDE;
+}
+
+.btn:last-child {
+    margin-right: 0;
+}
+
+
+/****************
+Bootstrap overrides
+****************/
+
+.panel-default > .panel-heading {
+    background-color: white;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: transparent;
+}
+
+
+/****************
+Select2 overrides
+****************/
+
+.select2-selection,
+.select2-selection__rendered,
+.select2-selection__arrow {
+    height: 40px !important;
+    span {
+        line-height: 40px !important;
+        text-align: left;
+    }
+}
+
+.select2-selection {
+    border-radius: 0 !important;
+}

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'projects/index'
 
-  post 'projects/update'
+  patch 'projects/update'
 
   post 'projects/create'
 
