@@ -18,6 +18,27 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********Content********
+*
+*   Font import
+*   Page styles
+*   Header of the page
+*   Project card list style
+*   Popup
+*   Todo popup
+*   Miscellaneous
+*   
+*   Bootstrap overrides
+*   Select2 overrides
+*
+************************/
+
+
+/****************
+Font import
+****************/
+
 @font-face {
     font-family: 'OpenSans';
     src: font-url('opensans-regular.ttf');
@@ -39,11 +60,33 @@
     font-style: normal;
 }
 
+
+/****************
+Page styles
+****************/
+
 body {
-    // font-size: 10px;
     font-family: 'OpenSans';
     padding-top: 70px;
 }
+
+
+/****************
+Header of the page
+****************/
+
+.navbar-header__blue {
+    background-color: #3AAFDB;
+}
+
+.navbar-header__blue a {
+    color: white;
+}
+
+
+/****************
+Project card list style
+****************/
 
 .project__todos {
     list-style: none;
@@ -54,22 +97,10 @@ body {
     display: inline;
 }
 
-.full-width {
-    padding: 0;
-    width: 100%;
-}
 
-.center-abs {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.todo-form {
-    width: 500px;
-    background-color: #fff;
-}
+/****************
+Popup
+****************/
 
 .modal {
     position: fixed;
@@ -89,6 +120,16 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
+}
+
+
+/****************
+Todo popup
+****************/
+
+.todo-form {
+    width: 500px;
+    background-color: #fff;
 }
 
 .todo-form__header {
@@ -116,18 +157,6 @@ body {
     padding-right: 8px;
 }
 
-.navbar-header__blue {
-    background-color: #3AAFDB;
-}
-
-.navbar-header__blue a {
-    color: white;
-}
-
-.line-through {
-    text-decoration: line-through;
-}
-
 .btn {
     display: inline-block;
     background-color: white;
@@ -136,15 +165,17 @@ body {
     padding: 10px 0;
     margin-right: 1%;
     color: white;
+    @media (max-width: 400px) {
+        margin: 10px 0;
+        width: 100%;
+    }
 }
 
-a:hover,
-a:focus,
-a:active,
+a.btn:hover,
+a.btn:focus,
+a.btn:active,
 {
     text-decoration: none;
-    opacity: 0.9;
-    outline: 0;
 }
 
 .todo-form__cancel {
@@ -161,6 +192,23 @@ a:active,
 
 
 /****************
+Miscellaneous
+****************/
+
+.full-width {
+    padding: 0;
+    width: 100%;
+}
+
+.center-abs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/****************
 Bootstrap overrides
 ****************/
 
@@ -171,6 +219,16 @@ Bootstrap overrides
 .nav > li > a:hover,
 .nav > li > a:focus {
     background-color: transparent;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+@media(max-width:770px) {
+    .navbar-nav {
+        margin-right: 0;
+    }
 }
 
 
