@@ -31,6 +31,7 @@
 *   
 *   Bootstrap overrides
 *   Select2 overrides
+*   iCheck overrides
 *
 ************************/
 
@@ -93,8 +94,11 @@ Project card list style
     padding: 0;
 }
 
-.project__todos__item label {
-    display: inline;
+.project__todos__item {
+    margin: 15px 0;
+    label {
+        display: inline;
+    }
 }
 
 
@@ -248,4 +252,13 @@ Select2 overrides
 
 .select2-selection {
     border-radius: 0 !important;
+}
+
+
+/****************
+iCheck overrides
+****************/
+
+.icheckbox_square-blue {
+    margin-right: 15px;
 }
