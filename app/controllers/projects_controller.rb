@@ -1,7 +1,16 @@
 class ProjectsController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
-    @projects = Project.all
+    @projects = Project.includes(:todos).all
     @todo = Todo.new
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @projects.to_json(:include => { :todos => { :only => [:text, :isCompleted] } })
+      end
+    end
   end
 
   def update
