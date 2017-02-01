@@ -1,88 +1,67 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-
       <div class="navbar-header navbar-fixed-top navbar-header__blue">
         <div class="container full-width">
           <div class="row">
-
             <div class="col-xs-12 col-md-12 col-lg-12">
               <a class="navbar-brand center-abs" href="#">Задачи</a>
               <ul class="nav navbar-nav pull-right">
                 <li><%= link_to "+", "#", class: "todo-add" %></li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
     <% @projects.each do |project| %>
       <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="panel panel-default">
-
           <div class="panel-heading">
             <h3 class="panel-title"><%= project.title %></h3>
           </div>
-
           <div class="panel-body">
             <ul class="project__todos">
-
               <% project.todos.order(:created_at).each do |todo| %>
                 <li class="project__todos__item">
-
-                  <%= form_for todo, url: projects_update_url, method: :patch do |f| %>
+                  <%= form_for todo, url: projects_update_url, method: :patch, authenticity_token: false do |f| %>
                     <%= f.hidden_field :id %>
                     <%= f.hidden_field :project_id %>
-
                     <% todo.isCompleted ? labelClass = "line-through" : labelClass="" %>
                     <%= f.label todo.id, class:labelClass do %>
                       <%= f.check_box :isCompleted %><%= todo.text %>
                     <% end %>
-
                   <% end %>
-
                 </li>
               <% end %>
-
             </ul>
           </div>
-
         </div>
       </div>
     <% end %>
   </div>
-
 </div>
-
 <div class="modal-overlay invisible" id="modal-overlay"></div>
 <div class="modal todo-form invisible" id="modal">
-
   <div class="todo-form__header">
     <h2>Новая задача</h2>
   </div>
-
   <div class="todo-form__body">
     <%= form_for :todo, as: :post, url: projects_create_url, :html => { :class => "todo-form" } do |f| %>
       <p>
         <%=  f.text_field :text, placeholder: "Название задачи..." %>
       </p>
-
       <p>
         <%= f.collection_select(:project_id, @projects, :id, :title) %>
       </p>
-
       <p class="todo-form__actions">
         <%= link_to "Отмена", "#", class: "btn todo-form__cancel" %>
         <%= link_to "ОК", "#", class: "btn todo-form__submit" %>
       </p>
     <% end %>
   </div>
-
 </div>
