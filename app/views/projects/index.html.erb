@@ -30,7 +30,6 @@
                 <li class="project__todos__item">
                   <%= form_for todo, url: projects_update_url, method: :patch, authenticity_token: false do |f| %>
                     <%= f.hidden_field :id %>
-                    <%= f.hidden_field :project_id %>
                     <% todo.isCompleted ? labelClass = "line-through" : labelClass="" %>
                     <%= f.label todo.id, class:labelClass do %>
                       <%= f.check_box :isCompleted %><%= todo.text %>

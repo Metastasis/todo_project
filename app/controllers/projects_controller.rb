@@ -16,14 +16,18 @@ class ProjectsController < ApplicationController
   def update
     @todo = Todo.find(params[:todo][:id])
     @todo.update(update_todo_params)
-    redirect_to :back
+    respond_to do |format|
+      format.html { render :text => "Ok" }
+    end
   end
 
   def create
     @project_id = params[:todo][:project_id]
     @project = Project.find(@project_id)
     @project.todos.create(todo_params)
-    redirect_to :back
+    respond_to do |format|
+      format.html { render :text => "Ok" }
+    end
   end
 
   private
